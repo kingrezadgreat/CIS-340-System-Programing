@@ -1,0 +1,184 @@
+============================================================================
+ 
+Name: Project2
+ 
+Author: 
+Reza Shisheie 2708062
+Version:
+ 9.6
+Copyright: Free
+
+============================================================================
+ 
+Project
+ Description :   
+The purpose of this project was reading from an image file of a floppy disk and printing data.  
+Floppy disk is orgenized according to FAT12 so that needs to be addressed.
+The program lists the files in the root alphabetically using bubble sort due to ease of implimentation. 
+
+----------------------------------------------------------------------------
+Compiling Instructions:
+The code comes with three files:
+main.c
+node.c
+node.h
+
+To make the Makefile, put make in the LINUX terminal and the binary file will be made.  
+Alternatively, you can make an exeecutable by the following command using gcc compiler: "gcc main.c node.c -o main"
+
+----------------------------------------------------------------------------
+Sample Output:
+
+$help
+Here is a list of available functions:
+    fmount <file name>:  mounts the image file into the program and stores data.
+    fumount:             unmounts the file.
+    structure:           unmounts the file.
+    quit:                quits the program.
+    ls:                  lists the content in the root directory
+    ls -l:               lists the content in the root directory in details
+    showsector sector#:  shows the contents (in hex dump) of the specified sector number.
+    showfat:             shows the content of FAT table (display sector 01 only with hex values).
+
+$fmount <imagefile>
+File mounted successfully
+
+$structure
+number of FAT:                      2
+number of sectors used by FAT:      9
+number of sectors per cluster:      1
+number of ROOT Entries:           224
+number of bytes per sector:       512
+---Sector #---     ---Sector Types---
+      0                  BOOT
+   01 -- 09              FAT1
+   10 -- 18              FAT2
+   19 -- 32              ROOT DIRECTORY
+
+$ls
+
+A.CLA
+ALOOP1.CLA
+ALOOP1.JAV
+ALOOP2.CLA
+ALOOP2.JAV
+ALOOP3.CLA
+ALOOP3.JAV
+B.CLA
+CONDIT.CLA
+CONDIT.JAV
+D.CLA
+DEMO.CLA
+DEMO.JAV
+DIR1                     <DIR>
+POLYTEST.CLA
+POLYTEST.JAV
+SOME.CLA
+
+$ls -l
+    *****************************
+    ** FILE ATTRIBUTE NOTATION **
+    **                         **
+    ** R ------ READ ONLY FILE **
+    ** S ------ SYSTEM FILE    **
+    ** H ------ HIDDEN FILE    **
+    ** A ------ ARCHIVE FILE   **
+    *****************************
+
+-A---        10/27/2014                 670     A.CLA                      3
+-A---        10/27/2014                 763     ALOOP1.CLA                 5
+-A---        10/27/2014                 333     ALOOP1.JAV                 7
+-A---        10/27/2014                 786     ALOOP2.CLA                 8
+-A---        10/27/2014                 404     ALOOP2.JAV                10
+-A---        10/27/2014                 786     ALOOP3.CLA                11
+-A---        10/27/2014                 408     ALOOP3.JAV                13
+-A---        10/27/2014                 358     B.CLA                     14
+-A---        10/27/2014                1067     CONDIT.CLA                15
+-A---        10/27/2014                 444     CONDIT.JAV                18
+-A---        10/27/2014                 508     D.CLA                     19
+-A---        10/27/2014                 967     DEMO.CLA                  20
+-A---        10/27/2014                 648     DEMO.JAV                  22
+-----        10/27/2014       <DIR>             DIR1                      24
+-A---        10/27/2014                 630     POLYTEST.CLA              28
+-A---        10/27/2014                1063     POLYTEST.JAV              30
+-A---        10/27/2014                 226     SOME.CLA                  33
+
+$showsector 10
+      0   1   2   3   4   5   6   7   8   9   a   b   c   d   e   f
+
+  0  f0  ff  ff   0  40   0  ff  6f   0  ff  ff  ff   9  f0  ff  ff
+ 10  cf   0  ff  ff  ff  ff   f   1  11  f0  ff  ff  ff  ff  15  f0
+ 20  ff  17  f0  ff  ff  ff  ff  ff  ff  ff  1d  f0  ff  1f   0   2
+ 30  ff  ff  ff   0   0   0   0   0   0   0   0   0   0   0   0   0
+ 40   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ 50   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ 60   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ 70   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ 80   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ 90   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ a0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ b0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ c0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ d0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ e0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+ f0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+100   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+110   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+120   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+130   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+140   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+150   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+160   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+170   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+180   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+190   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1a0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1b0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1c0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1d0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1e0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+1f0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+
+$showfat
+         0    1    2    3    4    5    6    7    8    9    a    b    c    d    e    f
+
+    0  ff0  fff FREE    4  fff    6  fff  fff    9  fff  fff    c  fff  fff  fff   10
+   10   11  fff  fff  fff   15  fff   17  fff  fff  fff  fff  fff   1d  fff   1f   20
+   20  fff  fff FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   30 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   40 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   50 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   60 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   70 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   80 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   90 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   a0 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   b0 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   c0 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   d0 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   e0 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+   f0 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+  100 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+  110 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+  120 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+  130 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+  140 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+  150 FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE FREE
+
+$quit
+
+Process returned 0 (0x0)   execution time : 48.518 s
+Press any key to continue.
+
+----------------------------------------------------------------------------
+
+Reporting Bugs: 
+
+	1. There are no bugs at this time except when the mounting fails. Inthat case the software does not crash but 
+	   it prompts invalid command.  it basically happens when the command is right but the file name is wrong.
+	2. The buffer for many place is set to 100 elements. A file with more than 100 elements on the root may cause crash.  This neds to be addressed in the future.  The proper solution would be making a likedlist with dynamic memory allocation which has unlimitednumber of inputs
+	3. The program is not able to read the subdirectories and that is something that I am still working on it.
+	4. It also does not print created time. I caouldn't find any solid documentation for time interpretation. 
+	5. bubblesort was used for sorting
+
+
