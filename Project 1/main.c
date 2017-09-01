@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #include "node.h"
 
-
 int main(void)
 {
     // declare a struct with a node as head
