@@ -10,3 +10,4 @@ void pop(struct mynode *head, int status);
 struct mynode *split(struct mynode *head);
 
 #endif // NODE_H_INCLUDED
+
