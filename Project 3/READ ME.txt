@@ -1,0 +1,149 @@
+?============================================================================
+ 
+Name: Project 3 and 4
+ 
+Author: 
+Reza Shisheie 2708062
+Version: 2.4
+Copyright: Free
+
+============================================================================
+Project Description :   
+
+The purpose of this project was making a shell which is able to handle internal commands such as cd, path, and quit and also external commands like ls -l
+
+----------------------------------------------------------------------------
+Compiling Instructions:
+
+The code comes with one file:
+main.c
+
+To make the Makefile, put make in the LINUX terminal and the binary file will be made.  
+Alternatively, you can make an exeecutable by the following command using gcc compiler: "gcc main.c -o main"
+
+
+----------------------------------------------------------------------------
+Instruction:
+Hers is an instruction on how to execute the commands and what to expect:
+
+    1.    path: will show you the path. If it is empty it shows nothing.  You need to set the path to execute a command.  You need to have both "/bin" and "/usr/bin" into the path directory to run some commands such as "ls -l" or "wc -c".  Path has a buffer up to 100 path and 100 charachter per path. You CANNT EXCEED that!
+    
+    2.    path +/: adds to path directory. Please do not put many spaces between the "/" and command, although the program tolerates that.
+Example:
+$ path +/bin
+
+    3.    path -/: removes a path.  Please do not put many spaces between the "/" and command, although the program tolerates that.
+Example:
+$ path -/bin
+
+    4.    cd /: sets the current directory. The current directory is set to the folder containig the source  code. However, it is not saved into cd. This cd command is used to set the change directory and using "cd" solely does not do anything.
+Example:
+$ cd /home/ubuntu/Desktop
+
+    5.    quit: It quits the shell.    
+    
+    6.    cmd 1 | cmd 2: Pipes two commands
+Example: 
+$ ls -l | wc -c
+
+    7. cmd1 > filename: generates a filename named "filename.txt" and saves the output of the cmd1 command into it.
+Example:
+$ ls -l > file
+
+    8. cmd1 < filename: Uses the data stores in the "filename.txt" and pipes it to the input of the cmd1 command.
+Example:
+$ ls -l < file
+    
+     
+
+----------------------------------------------------------------------------
+Reporting Bugs: 
+
+    1.    The program does not have any major bug at this time.
+
+    2.    The program runs smoothly with a single pipe. However, it is glitchy with two pipes.  Sometimes the result is good and sometimes it is not.
+
+    3.    the input redirection is glitchy too (cmd1 < filename). I ran the following code and there is a bad file descriptor error:
+wc -c < sourceFile
+Entered in redirect
+
+$ wc: 'standard input': Bad file descriptor
+0
+wc: -: Bad file descriptor
+    
+    
+    
+----------------------------------------------------------------------------
+Sample Output:
+
+ubuntu@ubuntu:~/Desktop/Project 3$ gcc -o main main.c
+ubuntu@ubuntu:~/Desktop/Project 3$ ./main
+
+$ ls
+Error. Path Empty
+
+$ path
+
+
+$ path +/home
+/home:
+
+$ ls
+
+$ path +/bin
+/home:/bin:
+
+$ path +/usr/bin
+/home:/bin:/usr/bin:
+
+$ path -/home
+/bin:/usr/bin:
+
+$ ls
+CIS340    file.txt  hello  hello.c  old  project3.html  test  test1  test1.c  test2  test2.c  test.c
+
+$ ls -l
+total 112
+drwxrwxr-x 4 ubuntu ubuntu  4096 Jul 11 10:21 CIS340
+-rw----r-- 1 ubuntu ubuntu     0 Jul 12 01:25 file.txt
+-rwxrwxr-x 1 ubuntu ubuntu 22376 Jul 12 02:28 hello
+-rwxrwxrwx 1 ubuntu ubuntu 18468 Jul 12 02:27 hello.c
+drwxrwxr-x 2 ubuntu ubuntu  4096 Jul 11 17:30 old
+-rwxrwxrwx 1 ubuntu ubuntu  6172 Jun 30 14:06 project3.html
+-rwxrwxr-x 1 ubuntu ubuntu  9064 Jul 11 20:03 test
+-rwxrwxr-x 1 ubuntu ubuntu  8864 Jul 11 20:54 test1
+-rwxrwxrwx 1 ubuntu ubuntu  1510 Jul 11 20:54 test1.c
+-rwxrwxr-x 1 ubuntu ubuntu  9000 Jul 11 20:37 test2
+-rwxrwxrwx 1 ubuntu ubuntu  1439 Jul 11 20:36 test2.c
+-rwxrwxrwx 1 ubuntu ubuntu  1411 Jul 10 22:07 test.c
+
+$ cd /home/ubuntu/Desktop
+/home/ubuntu/Desktop
+
+$ ls
+Project 3  R1.11 (need work on pipe)  ubiquity.desktop
+
+$ ls -l
+total 20
+drwxrwxr-x 4 ubuntu ubuntu 4096 Jul 12 02:28 Project 3
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jul 11 04:50 R1.11 (need work on pipe)
+-rwxr-xr-x 1 ubuntu ubuntu 8195 Jul 11 23:22 ubiquity.desktop
+
+$ ls -l | wc -c
+
+$ 197
+
+$ ls -l < file
+entered out redirect
+
+$ total 20
+drwxrwxr-x 4 ubuntu ubuntu 4096 Jul 12 02:28 Project 3
+drwxrwxrwx 2 ubuntu ubuntu 4096 Jul 11 04:50 R1.11 (need work on pipe)
+-rwxr-xr-x 1 ubuntu ubuntu 8195 Jul 11 23:22 ubiquity.desktop
+
+ls -l > file
+entered out redirect
+
+$ quit
+Exiting
+Terminated

@@ -1,0 +1,6 @@
+?total 60
+-rwxr-xr-x 1 ubuntu 999 22424 Jul 12 17:09 main
+-rwxrwxrwx 1 ubuntu 999 18715 Jul 12 17:18 main.c
+-rwxrwxrwx 1 ubuntu 999    38 Jul 12 02:56 makefile
+-rwxrwxrwx 1 ubuntu 999  4261 Jul 12 17:01 READ ME.txt
+-rwxrwxrwx 1 ubuntu 999     6 Jul 12 16:38 sourceFile.txt?
